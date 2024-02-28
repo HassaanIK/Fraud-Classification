@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fraud Detection</title>
+</head>
+<body>
+    <h1>Fraud Detection</h1>
+    <p>Please enter the following information:</p>
+    <form action="/predict" method="post">
+        Transaction Type:
+        <select name="type">
+            <option value="1">CASH_OUT</option>
+            <option value="2">PAYMENT</option>
+            <option value="3">CASH_IN</option>
+            <option value="4">TRANSFER</option>
+            <option value="5">DEBIT</option>
+        </select><br>
+        Amount: <input type="text" name="amount"><br>
+        Old Balance: <input type="text" name="old_balance"><br>
+        New Balance: <input type="text" name="new_balance"><br>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
