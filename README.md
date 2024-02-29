@@ -4,6 +4,7 @@
 This project is a web application that predicts fraud using a Random Forest model. It takes four input features (type, amount, old balance, new balance) and predicts whether the transaction is fraudulent or not, along with the probability of fraud.
 
 ### Steps
+- Data Collection: The data used for this project is taken from [Kaggle](https://www.kaggle.com/datasets/ealaxi/paysim1).
 - Data Preprocessing: The input data is normalized using a `StandardScaler`.
 - Model Training: The Random Forest model is trained on the normalized data. The model is saved as 'random_forest_modelf.joblib'.
 - Web App Development: Flask is used to create the web application.
