@@ -1,35 +1,21 @@
-# Fraud Classification
-### OVERVIEW
-This flask web app is a fraud transaction classifier that takes input features and predicts if it's a fraud or not. It uses a machine learning model trained on features like transaction type, amount, old balance and new balance to make predictions. The user inputs these features into forms on the web app, and the app returns if the transaction is fraud or not.
-### SPECIFICATIONS
-- The data used for training is taken from Kaggle. It has 10 different features out of which 4 are used.
-- The preprocessing done on this data is removal of outliers.
-- The features are normalized using StandardScaler from scikit learn library.
-- The machine learning algorithm used is Random Forest Classifier as it was giving the best accuracy out of all.
-- The metrics used for evaluation is accuracy, 99.97% of which is achieved.
-- No deep learning is applied as 99.97% accuracy is more than enough.
-- The project uses Flask, a lightweight web framework for Python, to create the web application.
-- The input features are normalized before being fed into the model for prediction.
-### USAGE
-```python
-def predict_fraud(input_data, model, scaler):
-    # Assuming input_data is a dictionary containing normalized values for each feature
-    features = [[input_data['type'], input_data['amount'], input_data['old_balance'], input_data['new_balance']]]
-    input_features_norm = scaler.transform(features)  # Use transform instead of fit_transform for test data
-    # Make predictions
-    predicted_label = model.predict(input_features_norm)[0]
-    if predicted_label == 1:
-        prediction = 'fraud'
-    else:
-        prediction = 'not fraud'
-    probabilities = model.predict_proba(input_features_norm)[0]
-    return predicted_label, prediction, probabilities
+# Fraud Classification Web App
 
-input_data = {
-        'type': type,
-        'amount': amount,
-        'old_balance': old_balance,
-        'new_balance': new_balance
-    }
-    # Call the prediction function
-    predicted_label, prediction, probabilities = predict_fraud(input_data, model, scaler)
+### Overview
+This project is a web application that predicts fraud using a Random Forest model. It takes four input features (type, amount, old balance, new balance) and predicts whether the transaction is fraudulent or not, along with the probability of fraud.
+
+### Steps
+- Data Preprocessing: The input data is normalized using a `StandardScaler`.
+- Model Training: The Random Forest model is trained on the normalized data. The model is saved as 'random_forest_modelf.joblib'.
+- Web App Development: Flask is used to create the web application.
+  - The app has two routes: `/` for the input form and `/predict` for the prediction result.
+- Prediction Function: The `predict_fraud` function takes the input data, loads the model and scaler, and makes a prediction. It returns the predicted label ('fraud' or 'not fraud') and the probabilities of each class.
+- Frontend: The input form (`index.html`) takes user inputs for the four features. The result page (`result.html`) displays the prediction result and probabilities.
+
+### Usage
+- Install the required packages: `pip install -r requirements.txt`.
+- Run the Flask app: `python app.py`.
+- Access the web app in your browser at `http://127.0.0.1:5000/`.
+
+### Web App
+![Screenshot (24)](https://github.com/HassaanIK/Fraud-Classification/assets/139614780/b63ab92e-d9dd-4b6a-b200-b9a57c348d5e)
+![Screenshot (25)](https://github.com/HassaanIK/Fraud-Classification/assets/139614780/a0410b95-3234-4304-96f2-3b416670dc93)
